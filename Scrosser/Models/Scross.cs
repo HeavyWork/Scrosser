@@ -93,6 +93,8 @@ namespace Scrosser.Models
             }
         }
 
+        public double ViewportSize => 0;
+
     }
 
 }

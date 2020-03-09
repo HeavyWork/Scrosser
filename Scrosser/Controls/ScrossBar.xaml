@@ -9,7 +9,7 @@
     <Grid>
         <ScrollBar Width="Auto" Height="Auto" Orientation="{Binding Orientation}"
                    LargeChange="{Binding Scross.LargeChange}" SmallChange="{Binding Scross.SmallChange}"
-                   Maximum="{Binding Scross.Total}" Minimum="{Binding Scross.Minimum}"
+                   Maximum="{Binding Scross.Total}" Minimum="{Binding Scross.Minimum}" ViewportSize="{Binding Scross.ViewportSize}"
                    Value="{Binding Scross.Position}" IsEnabled="{Binding Scross.IsEnabled, Mode=OneWay}"/>
     </Grid>
 </UserControl>
