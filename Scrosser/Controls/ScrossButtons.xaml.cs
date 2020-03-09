@@ -52,5 +52,25 @@ namespace Scrosser.Controls
             set => SetValue(OrientationProperty, value);
         }
 
+        private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
+        {
+            Button btn = sender as Button;
+            switch (btn?.Tag)
+            {
+                case "ZoomIn":
+                    if (Scross.Zoom + Scross.ZoomLargeChange <= Scross.ZoomMaximum)
+                        Scross.Zoom += Scross.ZoomLargeChange;
+                    else Scross.Zoom = Scross.ZoomMaximum;
+                    break;
+                case "ZoomOut":
+                    if (Scross.Zoom - Scross.ZoomLargeChange >= Scross.ZoomMinimum)
+                        Scross.Zoom -= Scross.ZoomLargeChange;
+                    else Scross.Zoom = Scross.ZoomMinimum;
+                    break;
+                case "ZoomToFit":
+                    Scross.Zoom = 1;
+                    break;
+            }
+        }
     }
 }

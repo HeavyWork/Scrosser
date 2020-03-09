@@ -4,9 +4,18 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Scrosser.Controls"
+             xmlns:u="clr-namespace:NeutrinoStudio.Utilities.Controls;assembly=NeutrinoStudio.Utilities"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-            
-    </Grid>
+    <StackPanel Orientation="{Binding Orientation}">
+        <Button Margin="2" IsEnabled="{Binding Scross.IsEnabled}" Tag="ZoomIn" Click="ButtonBase_OnClick">
+            <u:Icon Margin="0" Type="ZoomIn"/>
+        </Button>
+        <Button Margin="2" IsEnabled="{Binding Scross.IsEnabled}" Tag="ZoomOut" Click="ButtonBase_OnClick">
+            <u:Icon Margin="0" Type="ZoomOut"/>
+        </Button>
+        <Button Margin="2" IsEnabled="{Binding Scross.IsEnabled}" Tag="ZoomToFit" Click="ButtonBase_OnClick">
+            <u:Icon Margin="0" Type="ZoomToFit"/>
+        </Button>
+    </StackPanel>
 </UserControl>
