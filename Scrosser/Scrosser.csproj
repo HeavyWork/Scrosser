@@ -58,6 +58,9 @@
     <Compile Include="Controls\ScrossBar.xaml.cs">
       <DependentUpon>ScrossBar.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\ScrossSlider.xaml.cs">
+      <DependentUpon>ScrossSlider.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\HorizontalNavigator.xaml.cs">
       <DependentUpon>HorizontalNavigator.xaml</DependentUpon>
     </Compile>
@@ -65,6 +68,10 @@
       <DependentUpon>VerticalNavigator.xaml</DependentUpon>
     </Compile>
     <Page Include="Controls\ScrossBar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\ScrossSlider.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
