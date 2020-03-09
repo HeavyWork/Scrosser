@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Scrosser.Models;
 
 namespace Scrosser.Views
 {
@@ -23,6 +24,18 @@ namespace Scrosser.Views
         public HorizontalNavigator()
         {
             InitializeComponent();
+
+            DataContext = this;
         }
+
+        public static readonly DependencyProperty ScrossProperty = DependencyProperty.Register(
+            "Scross", typeof(Scross), typeof(HorizontalNavigator), new PropertyMetadata(new Scross()));
+
+        public Scross Scross
+        {
+            get => (Scross)GetValue(ScrossProperty);
+            set => SetValue(ScrossProperty, value);
+        }
+
     }
 }
