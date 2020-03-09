@@ -133,11 +133,19 @@ namespace Scrosser.Models
 
         public double SmallChange => 0.1;
 
-        public double Maximum => Total;
+        public double Maximum
+        {
+            get => Total;
+            set => Total = value;
+        }
 
         public double Minimum => 0;
 
-        public double Value => Position;
+        public double Value
+        {
+            get => Position;
+            set => Position = value;
+        }
 
     }
 
