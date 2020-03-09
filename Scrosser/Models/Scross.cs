@@ -27,6 +27,7 @@ namespace Scrosser.Models
 
         /// <summary>
         /// The position.
+        /// Notice that this is scroll position and is not song position.
         /// </summary>
         public double Position
         {
@@ -65,8 +66,6 @@ namespace Scrosser.Models
             }
         }
 
-        #endregion
-
         public double LargeChange => 1;
 
         public double SmallChange => 0.1;
@@ -94,6 +93,95 @@ namespace Scrosser.Models
         }
 
         public double ViewportSize => 0;
+
+        #endregion
+
+        #region Utilities
+
+        /// <summary>
+        /// Zoom in.
+        /// </summary>
+        /// <param name="large">Apply large change.</param>
+        public void ZoomIn(bool large = false)
+        {
+            if (large)
+            {
+                if (Zoom + ZoomLargeChange <= ZoomMaximum)
+                    Zoom += ZoomLargeChange;
+                else Zoom = ZoomMaximum;
+            }
+            else
+            {
+                if (Zoom + ZoomSmallChange <= ZoomMaximum)
+                    Zoom += ZoomSmallChange;
+                else Zoom = ZoomMaximum;
+            }
+        }
+
+        /// <summary>
+        /// Zoom out.
+        /// </summary>
+        /// <param name="large">Apply large change.</param>
+        public void ZoomOut(bool large = false)
+        {
+            if (large)
+            {
+                if (Zoom - ZoomLargeChange >= ZoomMinimum)
+                    Zoom -= ZoomLargeChange;
+                else Zoom = ZoomMinimum;
+            }
+            else
+            {
+                if (Zoom - ZoomSmallChange >= ZoomMinimum)
+                    Zoom -= ZoomSmallChange;
+                else Zoom = ZoomMinimum;
+            }
+        }
+
+        /// <summary>
+        /// Zoom to fit.
+        /// </summary>
+        public void ZoomToFit()
+        {
+            Zoom = 1;
+        }
+
+        /// <summary>
+        /// Scroll for mouse wheel.
+        /// </summary>
+        /// <param name="positive">Scroll down/right.</param>
+        /// <param name="large">Apply large change.</param>
+        public void ScrollDelta(bool positive = true, bool large = false)
+        {
+            if (positive)
+            {
+                if (large)
+                {
+                    if (Position + LargeChange <= Total) Position += LargeChange;
+                    else Position = Total;
+                }
+                else
+                {
+                    if (Position + SmallChange <= Total) Position += SmallChange;
+                    else Position = Total;
+                }
+            }
+            else
+            {
+                if (large)
+                {
+                    if (Position - LargeChange >= 0) Position -= LargeChange;
+                    else Position = 0;
+                }
+                else
+                {
+                    if (Position - SmallChange >= 0) Position -= SmallChange;
+                    else Position = 0;
+                }
+            }
+        }
+
+        #endregion
 
     }
 

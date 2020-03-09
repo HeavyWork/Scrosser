@@ -58,17 +58,13 @@ namespace Scrosser.Controls
             switch (btn?.Tag)
             {
                 case "ZoomIn":
-                    if (Scross.Zoom + Scross.ZoomLargeChange <= Scross.ZoomMaximum)
-                        Scross.Zoom += Scross.ZoomLargeChange;
-                    else Scross.Zoom = Scross.ZoomMaximum;
+                    Scross.ZoomIn(true);
                     break;
                 case "ZoomOut":
-                    if (Scross.Zoom - Scross.ZoomLargeChange >= Scross.ZoomMinimum)
-                        Scross.Zoom -= Scross.ZoomLargeChange;
-                    else Scross.Zoom = Scross.ZoomMinimum;
+                    Scross.ZoomOut(true);
                     break;
                 case "ZoomToFit":
-                    Scross.Zoom = 1;
+                    Scross.ZoomToFit();
                     break;
             }
         }
