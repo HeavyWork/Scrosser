@@ -28,7 +28,7 @@ namespace Scrosser.Controls
         }
 
         public static readonly DependencyProperty ScrossProperty = DependencyProperty.Register(
-            "Scross", typeof(Scross), typeof(ScrossBar), new PropertyMetadata(new Scross()));
+            "Scross", typeof(Scross), typeof(ScrossSlider), new PropertyMetadata(new Scross()));
 
         /// <summary>
         /// The scross data.
@@ -40,7 +40,7 @@ namespace Scrosser.Controls
         }
 
         public static readonly DependencyProperty OrientationProperty = DependencyProperty.Register(
-            "Orientation", typeof(Orientation), typeof(ScrossBar), new PropertyMetadata(Orientation.Vertical));
+            "Orientation", typeof(Orientation), typeof(ScrossSlider), new PropertyMetadata(Orientation.Vertical));
 
         /// <summary>
         /// The orientation.
