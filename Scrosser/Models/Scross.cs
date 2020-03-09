@@ -23,66 +23,6 @@ namespace Scrosser.Models
 
         #region Properties
 
-        private double _horizontalZoom = 1;
-
-        /// <summary>
-        /// Horizontal zoom.
-        /// </summary>
-        public double HorizontalZoom
-        {
-            get => _horizontalZoom;
-            set
-            {
-                _horizontalZoom = value;
-                OnPropertyChanged();
-            }
-        }
-
-        private double _verticalZoom = 1;
-
-        /// <summary>
-        /// Vertical zoom.
-        /// </summary>
-        public double VerticalZoom
-        {
-            get => _verticalZoom;
-            set
-            {
-                _verticalZoom = value;
-                OnPropertyChanged();
-            }
-        }
-
-        private double _horizontalScroll;
-
-        /// <summary>
-        /// Horizontal scroll.
-        /// </summary>
-        public double HorizontalScroll
-        {
-            get => _horizontalScroll;
-            set
-            {
-                _horizontalScroll = value;
-                OnPropertyChanged();
-            }
-        }
-
-        private double _verticalScroll;
-
-        /// <summary>
-        /// Vertical scroll.
-        /// </summary>
-        public double VerticalScroll
-        {
-            get => _verticalScroll;
-            set
-            {
-                _verticalScroll = value;
-                OnPropertyChanged();
-            }
-        }
-
         private double _position;
 
         /// <summary>
@@ -95,7 +35,6 @@ namespace Scrosser.Models
             {
                 _position = value;
                 OnPropertyChanged();
-                OnPropertyChanged(nameof(Value));
             }
         }
 
@@ -141,11 +80,9 @@ namespace Scrosser.Models
 
         public double Minimum => 0;
 
-        public double Value
-        {
-            get => Position;
-            set => Position = value;
-        }
+        public double ZoomLargeChange => 1;
+
+        public double ZoomSmallChange => 0.1;
 
     }
 
