@@ -55,12 +55,19 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Controls\ScrossBar.xaml.cs">
+      <DependentUpon>ScrossBar.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\HorizontalNavigator.xaml.cs">
       <DependentUpon>HorizontalNavigator.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\VerticalNavigator.xaml.cs">
       <DependentUpon>VerticalNavigator.xaml</DependentUpon>
     </Compile>
+    <Page Include="Controls\ScrossBar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
