@@ -95,6 +95,7 @@ namespace Scrosser.Models
             {
                 _position = value;
                 OnPropertyChanged();
+                OnPropertyChanged(nameof(Value));
             }
         }
 
@@ -110,10 +111,33 @@ namespace Scrosser.Models
             {
                 _total = value;
                 OnPropertyChanged();
+                OnPropertyChanged(nameof(Maximum));
+            }
+        }
+
+        private bool _isEnabled;
+
+        public bool IsEnabled
+        {
+            get => _isEnabled;
+            set
+            {
+                _isEnabled = value;
+                OnPropertyChanged();
             }
         }
 
         #endregion
+
+        public double LargeChange => 1;
+
+        public double SmallChange => 0.1;
+
+        public double Maximum => Total;
+
+        public double Minimum => 0;
+
+        public double Value => Position;
 
     }
 
