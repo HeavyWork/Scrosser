@@ -50,7 +50,6 @@ namespace Scrosser.Models
             {
                 _total = value;
                 OnPropertyChanged();
-                OnPropertyChanged(nameof(Maximum));
             }
         }
 
@@ -72,17 +71,27 @@ namespace Scrosser.Models
 
         public double SmallChange => 0.1;
 
-        public double Maximum
-        {
-            get => Total;
-            set => Total = value;
-        }
-
         public double Minimum => 0;
 
         public double ZoomLargeChange => 1;
 
         public double ZoomSmallChange => 0.1;
+
+        public double ZoomMinimum => 0.1;
+
+        public double ZoomMaximum => 10;
+
+        private double _zoom = 1;
+
+        public double Zoom
+        {
+            get => _zoom;
+            set
+            {
+                _zoom = value;
+                OnPropertyChanged();
+            }
+        }
 
     }
 
