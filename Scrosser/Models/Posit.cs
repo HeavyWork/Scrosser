@@ -5,6 +5,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace Scrosser.Models
 {
@@ -64,6 +65,23 @@ namespace Scrosser.Models
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        #endregion
+
+        #region Utilities
+
+        /// <summary>
+        /// Get the position in the viewer.
+        /// </summary>
+        /// <param name="scross">The horizontal scross.</param>
+        /// <param name="actualWidth">The actual width of the viewer.</param>
+        /// <returns>The visibility and the Margin.Left.</returns>
+        public (Visibility, double) GetPosition(Scross scross, double actualWidth)
+        {
+            double x = actualWidth / 2 - (Position - scross.Position) * scross.Zoom;
+            if (x >= 0 && x < actualWidth) return (Visibility.Visible, x);
+            return (Visibility.Collapsed, 0);
         }
 
         #endregion
