@@ -90,12 +90,13 @@ namespace Scrosser.Models
         /// <param name="x">The position in the viewer.</param>
         /// <param name="scross">The scross.</param>
         /// <param name="actualWidth">The ActualWidth of the viewer.</param>
-        /// <returns></returns>
-        public Posit GetPositFromViewer(double x, Scross scross, double actualWidth)
+        /// <param name="total">The total of the posit.</param>
+        /// <returns>The new Posit instance.</returns>
+        public static Posit GetPositFromViewer(double x, Scross scross, double actualWidth, long total)
         {
-            long p = (long) Math.Floor((actualWidth / 2 - x) / scross.Zoom + scross.Position);
-            if (p <= 0 || p > Total) p = 0;
-            return new Posit(Total, p);
+            long p = (long)Math.Floor((actualWidth / 2 - x) / scross.Zoom + scross.Position);
+            if (p <= 0 || p > total) p = 0;
+            return new Posit(total, p);
         }
 
         #endregion
