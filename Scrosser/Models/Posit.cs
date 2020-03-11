@@ -84,6 +84,20 @@ namespace Scrosser.Models
             return (Visibility.Collapsed, 0);
         }
 
+        /// <summary>
+        /// Get the scross position from the position in the viewer.
+        /// </summary>
+        /// <param name="x">The position in the viewer.</param>
+        /// <param name="scross">The scross.</param>
+        /// <param name="actualWidth">The ActualWidth of the viewer.</param>
+        /// <returns></returns>
+        public Posit GetPositFromViewer(double x, Scross scross, double actualWidth)
+        {
+            long p = (long) Math.Floor((actualWidth / 2 - x) / scross.Zoom + scross.Position);
+            if (p <= 0 || p > Total) p = 0;
+            return new Posit(Total, p);
+        }
+
         #endregion
 
     }
