@@ -64,6 +64,7 @@
     <Compile Include="Controls\ScrossSlider.xaml.cs">
       <DependentUpon>ScrossSlider.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Models\Posit.cs" />
     <Compile Include="Views\HorizontalNavigator.xaml.cs">
       <DependentUpon>HorizontalNavigator.xaml</DependentUpon>
     </Compile>
