@@ -24,7 +24,7 @@
                     <RowDefinition Height="Auto"/>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
-                <controls:ScrossButtons Orientation="Vertical"/>
+                <controls:ScrossButtons Orientation="Vertical" Scross="{Binding Scross, ElementName=RootElement}"/>
                 <controls:ScrossSlider Grid.Row="1" Orientation="Vertical" Scross="{Binding Scross, ElementName=RootElement}"/>
             </Grid>
         </Grid>

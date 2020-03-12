@@ -24,7 +24,7 @@
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
-                <controls:ScrossButtons Orientation="Horizontal"/>
+                <controls:ScrossButtons Orientation="Horizontal" Scross="{Binding Scross, ElementName=RootElement}"/>
                 <controls:ScrossSlider Grid.Column="1" Orientation="Horizontal" Scross="{Binding Scross, ElementName=RootElement}"/>
             </Grid>
         </Grid>
