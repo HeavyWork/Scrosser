@@ -66,9 +66,9 @@ namespace Scrosser.Models
             }
         }
 
-        public double LargeChange => 1;
+        public double LargeChange => 100;
 
-        public double SmallChange => 0.1;
+        public double SmallChange => 10;
 
         public double Minimum => 0;
 
