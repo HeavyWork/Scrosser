@@ -26,12 +26,10 @@ namespace Scrosser.Views
         public VerticalNavigator()
         {
             InitializeComponent();
-
-            DataContext = this;
         }
 
         public static readonly DependencyProperty ScrossProperty = DependencyProperty.Register(
-            "Scross", typeof(Scross), typeof(VerticalNavigator), new PropertyMetadata(new Scross()));
+            "Scross", typeof(Scross), typeof(VerticalNavigator), new UIPropertyMetadata(new Scross()));
 
         public Scross Scross
         {

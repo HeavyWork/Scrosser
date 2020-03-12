@@ -6,13 +6,14 @@
              xmlns:local="clr-namespace:Scrosser.Views"
              xmlns:controls="clr-namespace:Scrosser.Controls"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="100">
+             d:DesignHeight="450" d:DesignWidth="100"
+             Name="RootElement">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
             <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
-        <controls:ScrossBar Orientation="Vertical" Scross="{Binding Scross}"/>
+        <controls:ScrossBar Orientation="Vertical" Scross="{Binding Scross, ElementName=RootElement}"/>
         <Grid Grid.Column="1">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
@@ -24,7 +25,7 @@
                     <RowDefinition/>
                 </Grid.RowDefinitions>
                 <controls:ScrossButtons Orientation="Vertical"/>
-                <controls:ScrossSlider Grid.Row="1" Orientation="Vertical" Scross="{Binding Scross}"/>
+                <controls:ScrossSlider Grid.Row="1" Orientation="Vertical" Scross="{Binding Scross, ElementName=RootElement}"/>
             </Grid>
         </Grid>
     </Grid>
