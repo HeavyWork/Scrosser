@@ -92,7 +92,17 @@ namespace Scrosser.Models
             }
         }
 
-        public double ViewportSize { get; set; } = 0;
+        private double _viewportSize = 0;
+
+        public double ViewportSize
+        {
+            get => _viewportSize;
+            set
+            {
+                _viewportSize = value;
+                OnPropertyChanged();
+            }
+        }
 
         #endregion
 
