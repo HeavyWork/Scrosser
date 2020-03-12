@@ -18,7 +18,7 @@ namespace Scrosser.Models
 
         public Posit(
             int total = 0,
-            long position = 0)
+            int position = 0)
         {
             _position = position;
             _total = total;
@@ -32,9 +32,9 @@ namespace Scrosser.Models
         /// </summary>
         public double Start => 0;
 
-        private long _position;
+        private int _position;
 
-        public long Position
+        public int Position
         {
             get => _position;
             set
@@ -94,7 +94,7 @@ namespace Scrosser.Models
         /// <returns>The new Posit instance.</returns>
         public static Posit GetPositFromViewer(double x, Scross scross, double actualWidth, int total)
         {
-            long p = (long)Math.Floor(scross.Position - (actualWidth / 2 - x) / scross.Zoom);
+            int p = (int)Math.Floor(scross.Position - (actualWidth / 2 - x) / scross.Zoom);
             if (p <= 0 || p > total) p = 0;
             return new Posit(total, p);
         }
