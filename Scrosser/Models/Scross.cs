@@ -92,7 +92,7 @@ namespace Scrosser.Models
             }
         }
 
-        public double ViewportSize => 0;
+        public double ViewportSize { get; set; } = 0;
 
         #endregion
 
