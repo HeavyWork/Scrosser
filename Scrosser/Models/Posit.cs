@@ -79,7 +79,7 @@ namespace Scrosser.Models
         /// <returns>The visibility and the Margin.Left.</returns>
         public (Visibility, double) GetPosition(Scross scross, double actualWidth)
         {
-            double x = actualWidth / 2 - (Position - scross.Position) * scross.Zoom;
+            double x = actualWidth / 2 - (scross.Position - Position) * scross.Zoom;
             if (x >= 0 && x < actualWidth) return (Visibility.Visible, x);
             return (Visibility.Collapsed, 0);
         }
@@ -94,7 +94,7 @@ namespace Scrosser.Models
         /// <returns>The new Posit instance.</returns>
         public static Posit GetPositFromViewer(double x, Scross scross, double actualWidth, long total)
         {
-            long p = (long)Math.Floor((actualWidth / 2 - x) / scross.Zoom + scross.Position);
+            long p = (long)Math.Floor(scross.Position - (actualWidth / 2 - x) / scross.Zoom);
             if (p <= 0 || p > total) p = 0;
             return new Posit(total, p);
         }
