@@ -13,15 +13,18 @@ namespace Scrosser.Models
     /// <summary>
     /// Position definition.
     /// </summary>
-    public class Posit : INotifyPropertyChanged
+    /// <typeparam name="T">The type of the posit.</typeparam>
+    public class Posit<T> : INotifyPropertyChanged
     {
 
         public Posit(
-            int total = 0,
-            int position = 0)
+            T total,
+            T position,
+            T start)
         {
             _position = position;
             _total = total;
+            Start = start;
         }
 
         #region DataContext
@@ -30,11 +33,11 @@ namespace Scrosser.Models
         /// Start position. Always 0.
         /// Define a new class inherit from Posit if you want to redefine start position.
         /// </summary>
-        public double Start => 0;
+        public T Start { get; }
 
-        private int _position;
+        private T _position;
 
-        public int Position
+        public T Position
         {
             get => _position;
             set
@@ -44,9 +47,9 @@ namespace Scrosser.Models
             }
         }
 
-        private int _total;
+        private T _total;
 
-        public int Total
+        public T Total
         {
             get => _total;
             set
@@ -76,10 +79,11 @@ namespace Scrosser.Models
         /// </summary>
         /// <param name="scross">The horizontal scross.</param>
         /// <param name="actualLength">The actual length of the viewer.</param>
+        /// <param name="minus">Minus double and T.</param>
         /// <returns>The visibility and the Margin.Left.</returns>
-        public (Visibility, double) GetPosition(Scross scross, double actualLength)
+        public (Visibility, double) GetPosition(Scross scross, double actualLength, Func<double, T, double> minus)
         {
-            double x = actualLength / 2 - (scross.Position - Position) * scross.Zoom;
+            double x = actualLength / 2 - minus(scross.Position, Position) * scross.Zoom;
             if (x >= 0 && x < actualLength) return (Visibility.Visible, x);
             return (Visibility.Collapsed, 0);
         }
@@ -92,11 +96,11 @@ namespace Scrosser.Models
         /// <param name="actualLength">The actual length of the viewer.</param>
         /// <param name="total">The total of the posit.</param>
         /// <returns>The new Posit instance.</returns>
-        public static Posit GetPositFromViewer(double x, Scross scross, double actualLength, int total)
+        public static Posit<int> GetPositFromViewer(double x, Scross scross, double actualLength, int total)
         {
             int p = (int)Math.Floor(scross.Position - (actualLength / 2 - x) / scross.Zoom);
             if (p <= 0 || p > total) p = 0;
-            return new Posit(total, p);
+            return new Posit<int>(total, p, 0);
         }
 
         /// <summary>
@@ -106,12 +110,12 @@ namespace Scrosser.Models
         /// <param name="scross">The scross.</param>
         /// <param name="actualLength">The actual length of the viewer.</param>
         /// <param name="total">The total of the posit.</param>
-        /// <returns>The new value.</returns>
-        public static double GetValueFromViewer(double x, Scross scross, double actualLength, double total)
+        /// <returns>The new posit.</returns>
+        public static Posit<double> GetValueFromViewer(double x, Scross scross, double actualLength, double total)
         {
             double p = scross.Position - (actualLength / 2 - x) / scross.Zoom;
             if (p <= 0 || p > total) p = 0;
-            return p;
+            return new Posit<double>(total, p, 0);
         }
 
         #endregion
