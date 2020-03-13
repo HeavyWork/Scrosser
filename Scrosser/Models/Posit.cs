@@ -75,16 +75,30 @@ namespace Scrosser.Models
         #region Utilities
 
         /// <summary>
-        /// Get the position in the viewer.
+        /// Get the horizontal position in the viewer.
         /// </summary>
         /// <param name="scross">The horizontal scross.</param>
-        /// <param name="actualLength">The actual length of the viewer.</param>
+        /// <param name="actualWidth">The actual width of the viewer.</param>
         /// <param name="minus">Minus double and T.</param>
         /// <returns>The visibility and the Margin.Left.</returns>
-        public (Visibility, double) GetPosition(Scross scross, double actualLength, Func<double, T, double> minus)
+        public (Visibility, double) GetHorizontalPosition(Scross scross, double actualWidth, Func<double, T, double> minus)
         {
-            double x = actualLength / 2 - minus(scross.Position, Position) * scross.Zoom;
-            if (x >= 0 && x < actualLength) return (Visibility.Visible, x);
+            double x = actualWidth / 2 - minus(scross.Position, Position) * scross.Zoom;
+            if (x >= 0 && x < actualWidth) return (Visibility.Visible, x);
+            return (Visibility.Collapsed, 0);
+        }
+
+        /// <summary>
+        /// Get the vertical position in the viewer.
+        /// </summary>
+        /// <param name="scross">The horizontal scross.</param>
+        /// <param name="actualHeight">The actual height of the viewer.</param>
+        /// <param name="minus">Minus double and T.</param>
+        /// <returns>The visibility and the Margin.Left.</returns>
+        public (Visibility, double) GetVertitalPosition(Scross scross, double actualHeight, Func<double, T, double> minus)
+        {
+            double x = actualHeight / 2 + minus(scross.Total - scross.Position, Position) * scross.Zoom;
+            if (x >= 0 && x < actualHeight) return (Visibility.Visible, x);
             return (Visibility.Collapsed, 0);
         }
 
