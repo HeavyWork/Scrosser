@@ -99,6 +99,21 @@ namespace Scrosser.Models
             return new Posit(total, p);
         }
 
+        /// <summary>
+        /// Get the value from the position in the viewer.
+        /// </summary>
+        /// <param name="x">The position in the viewer.</param>
+        /// <param name="scross">The scross.</param>
+        /// <param name="actualLength">The actual length of the viewer.</param>
+        /// <param name="total">The total of the posit.</param>
+        /// <returns>The new value.</returns>
+        public static double GetValueFromViewer(double x, Scross scross, double actualLength, double total)
+        {
+            double p = scross.Position - (actualLength / 2 - x) / scross.Zoom;
+            if (p <= 0 || p > total) p = 0;
+            return p;
+        }
+
         #endregion
 
     }
