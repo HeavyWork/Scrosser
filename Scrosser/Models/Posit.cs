@@ -75,12 +75,12 @@ namespace Scrosser.Models
         /// Get the position in the viewer.
         /// </summary>
         /// <param name="scross">The horizontal scross.</param>
-        /// <param name="actualWidth">The actual width of the viewer.</param>
+        /// <param name="actualLength">The actual length of the viewer.</param>
         /// <returns>The visibility and the Margin.Left.</returns>
-        public (Visibility, double) GetPosition(Scross scross, double actualWidth)
+        public (Visibility, double) GetPosition(Scross scross, double actualLength)
         {
-            double x = actualWidth / 2 - (scross.Position - Position) * scross.Zoom;
-            if (x >= 0 && x < actualWidth) return (Visibility.Visible, x);
+            double x = actualLength / 2 - (scross.Position - Position) * scross.Zoom;
+            if (x >= 0 && x < actualLength) return (Visibility.Visible, x);
             return (Visibility.Collapsed, 0);
         }
 
@@ -89,12 +89,12 @@ namespace Scrosser.Models
         /// </summary>
         /// <param name="x">The position in the viewer.</param>
         /// <param name="scross">The scross.</param>
-        /// <param name="actualWidth">The ActualWidth of the viewer.</param>
+        /// <param name="actualLength">The actual length of the viewer.</param>
         /// <param name="total">The total of the posit.</param>
         /// <returns>The new Posit instance.</returns>
-        public static Posit GetPositFromViewer(double x, Scross scross, double actualWidth, int total)
+        public static Posit GetPositFromViewer(double x, Scross scross, double actualLength, int total)
         {
-            int p = (int)Math.Floor(scross.Position - (actualWidth / 2 - x) / scross.Zoom);
+            int p = (int)Math.Floor(scross.Position - (actualLength / 2 - x) / scross.Zoom);
             if (p <= 0 || p > total) p = 0;
             return new Posit(total, p);
         }
