@@ -127,7 +127,7 @@ namespace Scrosser.Models
         /// <returns>The new posit.</returns>
         public static Posit<double> GetValueFromViewer(double x, Scross scross, double actualLength, double total)
         {
-            double p = scross.Position - (actualLength / 2 - x) / scross.Zoom;
+            double p = scross.Total - scross.Position - (actualLength / 2 - x) / scross.Zoom;
             if (p <= 0 || p > total) p = 0;
             return new Posit<double>(total, p, 0);
         }
